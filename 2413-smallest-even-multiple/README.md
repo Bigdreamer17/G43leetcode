@@ -2,17 +2,17 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre style="position: relative;"><strong>Input:</strong> n = 5
+<pre><strong>Input:</strong> n = 5
 <strong>Output:</strong> 10
 <strong>Explanation:</strong> The smallest multiple of both 5 and 2 is 10.
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre style="position: relative;"><strong>Input:</strong> n = 6
+<pre><strong>Input:</strong> n = 6
 <strong>Output:</strong> 6
 <strong>Explanation:</strong> The smallest multiple of both 6 and 2 is 6. Note that a number is a multiple of itself.
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
