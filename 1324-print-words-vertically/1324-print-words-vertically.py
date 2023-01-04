@@ -3,7 +3,7 @@ class Solution:
         
         stringsplit = s.split()
         
-        Answer =[]
+        FinalAnswer =[]
         
         maxlen_word = max(len(word) for word in stringsplit)
         
@@ -16,11 +16,11 @@ class Solution:
                 else:
                     res.append(" ")
             
-            Answer.append(res)
+            FinalAnswer.append(res)
         
         output = []
         
-        for p in Answer:
+        for p in FinalAnswer:
             output.append(''.join(p).rstrip())
         
         return output
