@@ -4,4 +4,4 @@ class Solution:
         for i in matrix:
             if i[0] <= target:
                 tar = i
-        return target in tar
+        return target in set(tar)
