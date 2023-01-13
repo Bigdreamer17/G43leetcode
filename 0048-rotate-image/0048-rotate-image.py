@@ -10,7 +10,4 @@ class Solution:
         
         
         for i in matrix:
-            i.reverse()
-        # for row in range(size):
-        #     for col in range(row + 1, size):
-        #         matrix[col][row], matrix[row][col] = matrix[row][col], matrix[col][row] 
+            i.reverse() 
