@@ -5,12 +5,13 @@
 #         self.next = next
 class Solution:
     def nextLargerNodes(self, head: Optional[ListNode]) -> List[int]:
+        # using Monotonic stack
         stack = []
         while head:
             stack.append(head.val)
             head = head.next
-        monstack = []
         
+        monstack = []
         nextGreater = {i:0 for i in  range(len(stack))}
         for i in range(len(stack)):
             
