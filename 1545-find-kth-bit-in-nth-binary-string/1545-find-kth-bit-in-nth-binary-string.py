@@ -4,20 +4,18 @@ class Solution:
         # Recurssive r/ship =  Si - 1 + "1" + reverse(invert(Si - 1)) for i > 1
         # State = n - 1
         
-        def bit(n):
+        def kth(n, k):
             if n == 1:
-                return "0"
+                return 0
             
-            prev = bit(n- 1)
-            invert = ""
-            for i in prev:
-                if i == '0':
-                    invert += '1'
-                else:
-                    invert += '0'
-            return prev + '1' + invert[::-1]
-        
-        
-        s = bit(n)
-        return s[k - 1]
-        
+            length = pow(2, n - 1) - 1
+            
+            if k - length == 1:
+                return 1
+            
+            if k <= length:
+                return kth(n -1, k)
+            else:
+                return 1 - int(kth(n - 1, 2 * (length + 1) - k))
+            
+        return str(kth(n, k))
