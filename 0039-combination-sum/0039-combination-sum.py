@@ -1,20 +1,22 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         ans = []
-        def backtracking(lis, indx):
+        def backtracking(lis, index):
             # End Goal
             if sum(lis) == target:
-               ans.append(lis[:])
-               return 
+                ans.append(lis[:]) # LIS[:] Same as i for i in lis
+                return 
             
             # Constaraint
             if sum(lis) > target:
                 return
-            
-            for i in range(indx, len(candidates)):
-                lis.append(candidates[i])
-                backtracking(lis,i)
-                lis.pop()
-                
+            if index >= len(candidates):
+                return
+            # Pick stay
+            lis.append(candidates[index])
+            backtracking(lis, index)
+            lis.pop()
+            # Dont pick move
+            backtracking(lis, index + 1)
         backtracking([], 0)
         return ans
