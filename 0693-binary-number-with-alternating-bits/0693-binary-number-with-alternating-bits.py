@@ -1,4 +1,5 @@
 class Solution:
     def hasAlternatingBits(self, n: int) -> bool:
-        n = n ^ (n >> 1)
+        shift = n >> 1
+        n = n ^ shift
         return (n & n + 1) == 0
