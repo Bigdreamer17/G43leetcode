@@ -6,18 +6,19 @@
 #         self.right = right
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        summ = []
-        def pathfinder(root, string):
-            if not root:
-                return
+        ans = []
+        def inorder(root, number):
+            if root is None:
+                return 
             
-            string += str(root.val)
-            pathfinder(root.left, string)
-            pathfinder(root.right, string)
+            number += str(root.val)
+            
+            inorder(root.left, number)
+            
+            inorder(root.right, number)
             
             if root.left is None and root.right is None:
-                summ.append(int(string))
+                ans.append(int(number))
         
-        pathfinder(root, "")
-        return sum(summ)
-        
+        inorder(root, "")
+        return sum(ans)
