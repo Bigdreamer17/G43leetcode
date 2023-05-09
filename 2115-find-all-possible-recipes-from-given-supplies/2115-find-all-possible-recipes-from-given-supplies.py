@@ -25,12 +25,3 @@ class Solution:
                     queue.append(neighbor)
                     
         return order
-        
-        
-        
-#         indegree = [node : 0 for in graph]
-#         for node in graph:
-#             for neighbor in graph[node]:
-#                 indegree[neighbor] += 1
-                
-            
