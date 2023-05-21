@@ -7,31 +7,34 @@
 
 class Solution:
     def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
-        graph = collections.defaultdict(list)
-        def build_graph(cur, parent):
-            if cur and parent:
-                graph[cur.val].append(parent.val)
-                graph[parent.val].append(cur.val)
-            if cur.left:
-                build_graph(cur.left, cur)
-            if cur.right:
-                build_graph(cur.right, cur) 
-        build_graph(root, None)
-        
-        answer = []
-        visited = set([target.val])
+        graph = defaultdict(list)
 
-        queue = collections.deque([(target.val, 0)])
+        def dfs(node):
+            if not node:
+                return
+            if node.left:
+                graph[node.val].append(node.left.val)
+                graph[node.left.val].append(node.val)
+                dfs(node.left)
+            if node.right:
+                graph[node.val].append(node.right.val)
+                graph[node.right.val].append(node.val)
+                dfs(node.right)
+        dfs(root)
+
+        visited = set()
+        queue = deque()
+        queue.append((target.val,0))
+        visited.add(target.val)
+
+        res = []
         while queue:
-            cur, distance = queue.popleft()
+            node,step = queue.popleft()
+            if step == k:
+                res.append(node)
+            for child in graph[node]:
+                if child not in visited:
+                    queue.append((child,step + 1))
+                    visited.add(child)
 
-            if distance == k:
-                answer.append(cur)
-                continue
-                
-            for neighbor in graph[cur]:
-                if neighbor not in visited:
-                    visited.add(neighbor)
-                    queue.append((neighbor, distance + 1))
-                    
-        return answer
+        return res
