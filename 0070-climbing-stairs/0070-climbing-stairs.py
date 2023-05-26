@@ -1,17 +1,9 @@
 class Solution:
+    def __init__(self):
+        self.memo = {1 : 1, 2: 2}
     def climbStairs(self, n: int) -> int:
-        def stairs(n):
-            if n==0 or n==1:
-                return 1
-                
-            a=1
-            b=1
-            for i in range(2,n+1):
-                c=a+b
-                a=b
-                b=c
-                
-            return c
-           
-            
-        return stairs(n)
+        if n not in self.memo.keys():
+            self.memo[n] = self.climbStairs(n - 1) + self.climbStairs(n - 2)
+        
+        return self.memo[n]
+        
