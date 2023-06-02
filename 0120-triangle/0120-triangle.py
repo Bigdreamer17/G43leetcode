@@ -1,12 +1,18 @@
 class Solution:
+    def dp(self, triangle, index):
+         
+        
+        for j in range(len(triangle[index])):
+            triangle[index][j] += min(triangle[index + 1][j], triangle[index + 1][j + 1])
+            
+        if index == 0:
+            return triangle[0][0]
+        
+        return self.dp(triangle, index - 1)
+    
     def minimumTotal(self, triangle: List[List[int]]) -> int:
-        for i in range(1, len(triangle)):
-            for j in range(len(triangle[i])):
-                if j == 0:
-                    triangle[i][j] += triangle[i-1][j]
-                elif 0 < j < len(triangle[i]) - 1:
-                    triangle[i][j] += min(triangle[i - 1][j - 1], triangle[i - 1][j])
-                else:
-                    triangle[i][j] += triangle[i - 1][j - 1]
-                    
-        return min(triangle[-1])
+        if len(triangle) == 1:
+            return triangle[0][0]
+        
+        
+        return self.dp(triangle, len(triangle) - 2)
