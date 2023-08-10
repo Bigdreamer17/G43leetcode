@@ -1,11 +1,11 @@
 class Solution:
     def finalString(self, s: str) -> str:
-        reverse = ""
-        
-        for character in s:
-            if character == 'i':
-                reverse = reverse[len(reverse)::-1]
-                
-            else:
-                reverse += character
-        return reverse
+        while "i" in s:
+            index=s.index("i")
+
+            #first half and second half
+            first=s[:index][::-1]
+            second=s[index+1:]
+
+            s="".join([first,second])
+        return s
