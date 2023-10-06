@@ -1,6 +1,6 @@
 class Solution:
     def removeDuplicates(self, s: str) -> str:
-        store = []
+        store = deque()
         
         for ch in s:
             if store and store[-1] == ch:
